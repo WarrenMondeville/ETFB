@@ -118,3 +118,9 @@ message M2C_Reload // IResponse
 	int32 Error = 91;
 	string Message = 92;
 }
+
+//心跳消息
+message C2G_Heartbeat // IMessage
+{
+	int32 RpcId = 90;
+}
