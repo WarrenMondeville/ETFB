@@ -70,6 +70,9 @@ namespace ILRuntime.Runtime.Generated
             ETModel_AppTypeHelper_Binding.Register(app);
             ETModel_GameObjectHelper_Binding.Register(app);
             UnityEngine_TextAsset_Binding.Register(app);
+            ETModel_AsyncETTaskMethodBuilder_Binding.Register(app);
+            ETModel_ETTask_Binding.Register(app);
+            ETModel_ETTask_Binding_Awaiter_Binding.Register(app);
             ETModel_AsyncETVoidMethodBuilder_Binding.Register(app);
             ETModel_GlobalConfigComponent_Binding.Register(app);
             ETModel_GlobalProto_Binding.Register(app);
@@ -79,8 +82,6 @@ namespace ILRuntime.Runtime.Generated
             ETModel_SessionComponent_Binding.Register(app);
             ETModel_ComponentFactory_Binding.Register(app);
             ETModel_PlayerComponent_Binding.Register(app);
-            ETModel_ETTask_Binding.Register(app);
-            ETModel_ETTask_Binding_Awaiter_Binding.Register(app);
             ETModel_SceneChangeComponent_Binding.Register(app);
             ETModel_C2G_EnterMap_Binding.Register(app);
             ETModel_Session_Binding.Register(app);
