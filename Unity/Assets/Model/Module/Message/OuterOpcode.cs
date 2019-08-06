@@ -48,6 +48,10 @@ namespace ETModel
 	[Message(OuterOpcode.M2C_Reload)]
 	public partial class M2C_Reload : IResponse {}
 
+//心跳消息
+	[Message(OuterOpcode.C2G_Heartbeat)]
+	public partial class C2G_Heartbeat : IMessage {}
+
 }
 namespace ETModel
 {
@@ -68,5 +72,6 @@ namespace ETModel
 		 public const ushort G2C_Test = 113;
 		 public const ushort C2M_Reload = 114;
 		 public const ushort M2C_Reload = 115;
+		 public const ushort C2G_Heartbeat = 116;
 	}
 }

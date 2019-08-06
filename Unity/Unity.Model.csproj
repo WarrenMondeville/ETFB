@@ -138,6 +138,7 @@
     <Compile Include="Assets\Model\Component\Config\RunServerConfig.cs" />
     <Compile Include="Assets\Model\Component\Config\StartConfig.cs" />
     <Compile Include="Assets\Model\Component\GlobalConfigComponent.cs" />
+    <Compile Include="Assets\Model\Component\HeartbeatComponent.cs" />
     <Compile Include="Assets\Model\Component\SceneChangeComponent.cs" />
     <Compile Include="Assets\Model\Component\TimerComponent.cs" />
     <Compile Include="Assets\Model\Entity\Game.cs" />

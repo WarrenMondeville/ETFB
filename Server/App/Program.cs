@@ -58,7 +58,8 @@ namespace App
 						Game.Scene.AddComponent<NetOuterComponent, string>(outerConfig.Address);
 						Game.Scene.AddComponent<LocationProxyComponent>();
 						Game.Scene.AddComponent<RealmGateAddressComponent>();
-						break;
+                        Game.Scene.AddComponent<HeartbeatMgrComponent>();
+                        break;
 					case AppType.Gate:
 						Game.Scene.AddComponent<PlayerComponent>();
 						Game.Scene.AddComponent<MailboxDispatcherComponent>();
@@ -70,7 +71,8 @@ namespace App
 						Game.Scene.AddComponent<ActorLocationSenderComponent>();
 						Game.Scene.AddComponent<GateSessionKeyComponent>();
 						Game.Scene.AddComponent<CoroutineLockComponent>();
-						break;
+                        Game.Scene.AddComponent<HeartbeatMgrComponent>();
+                        break;
 					case AppType.Location:
 						Game.Scene.AddComponent<NetInnerComponent, string>(innerConfig.Address);
 						Game.Scene.AddComponent<LocationComponent>();
@@ -86,7 +88,8 @@ namespace App
 						Game.Scene.AddComponent<ActorMessageDispatcherComponent>();
 						Game.Scene.AddComponent<PathfindingComponent>();
 						Game.Scene.AddComponent<CoroutineLockComponent>();
-						break;
+                        Game.Scene.AddComponent<HeartbeatMgrComponent>();
+                        break;
 					case AppType.AllServer:
 						// 发送普通actor消息
 						Game.Scene.AddComponent<ActorMessageSenderComponent>();
@@ -130,8 +133,9 @@ namespace App
 						Game.Scene.AddComponent<ConsoleComponent>();
 
 						Game.Scene.AddComponent<CoroutineLockComponent>();
-						// Game.Scene.AddComponent<HttpComponent>();
-						break;
+                        // Game.Scene.AddComponent<HttpComponent>();
+                        Game.Scene.AddComponent<HeartbeatMgrComponent>();
+                        break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();
 						Game.Scene.AddComponent<BenchmarkComponent, string>(clientConfig.Address);
