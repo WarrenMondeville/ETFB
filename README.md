@@ -1,6 +1,6 @@
 # [English](https://github.com/egametang/Egametang/blob/master/README-EN.md) 
 
-__讨论QQ群 : 474643097__  testttt
+__讨论QQ群 : 474643097__  testtttttttt
 
 [ET论坛](https://bbs.honorworkroom.com/forum.php)  
 
