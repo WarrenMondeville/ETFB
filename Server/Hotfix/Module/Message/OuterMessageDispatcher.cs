@@ -18,7 +18,7 @@ namespace ETHotfix
                 SessionHeartbeatComponent.DestroySeesiontSecondTotalNum)
             {
                 //断开连接
-                sessionHeartbeatComponent.DisposeSession();
+                //sessionHeartbeatComponent.DisposeSession();
                 //直接封号
                 //  UserHelp.StopSealOrRelieve(sessionUserComponent.UserId,true,"DOSS攻击封号"); //不要封号容易误封
                 return;

@@ -33,6 +33,7 @@ message Actor_TransferResponse // IActorLocationResponse
 message C2G_EnterMap // IRequest
 {
 	int32 RpcId = 90;
+	int32 GameType=1;
 }
 
 message G2C_EnterMap // IResponse
@@ -123,4 +124,51 @@ message M2C_Reload // IResponse
 message C2G_Heartbeat // IMessage
 {
 	int32 RpcId = 90;
+}
+
+
+message Frame_Pos // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Id = 94;
+	
+	float X = 1;
+	float Y = 2;
+}
+
+message BallInfo
+{
+	int64 UnitId  = 1;
+
+	float X = 2;
+	float Y = 3;
+}
+
+message M2C_CreateBalls // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+    repeated BallInfo Balls = 1;
+}
+
+message M2C_BallPath // IActorMessage
+{
+	int64 ActorId = 93;
+	
+	int64 Id = 1;
+
+	float X = 2;
+	float Y = 3;
+	
+	float Xt = 4;
+	float Yt = 5;
+
+}
+
+message C2M_BallSkill // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Skill = 1;
 }

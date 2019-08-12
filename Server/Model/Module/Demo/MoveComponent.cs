@@ -6,6 +6,8 @@ namespace ETModel
 {
     public class MoveComponent: Component
     {
+        public Vector3 Position;
+
         public Vector3 Target;
 
         // 开启移动协程的时间
@@ -23,8 +25,8 @@ namespace ETModel
         // 比方说玩家移动了2500毫秒,玩家有新的目标,这时旧的移动协程结束,将计算250毫秒移动的位置，而不是300毫秒移动的位置
         public async ETTask StartMove(CancellationToken cancellationToken)
         {
-            Unit unit = this.GetParent<Unit>();
-            this.StartPos = unit.Position;
+            //Unit unit = this.GetParent<Unit>();
+            this.StartPos = Position;
             this.StartTime = TimeHelper.Now();
             float distance = (this.Target - this.StartPos).magnitude;
             if (Math.Abs(distance) < 0.1f)
@@ -42,12 +44,12 @@ namespace ETModel
                 long timeNow = TimeHelper.Now();
                 if (timeNow - this.StartTime >= this.needTime)
                 {
-                    unit.Position = this.Target;
+                    Position = this.Target;
                 }
                 else
                 {
                     float amount = (timeNow - this.StartTime) * 1f / this.needTime;
-                    unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
+                    Position = Vector3.Lerp(this.StartPos, this.Target, amount);
                 }
             });
 
@@ -59,12 +61,12 @@ namespace ETModel
                 
                 if (timeNow - this.StartTime >= this.needTime)
                 {
-                    unit.Position = this.Target;
+                    Position = this.Target;
                     break;
                 }
 
                 float amount = (timeNow - this.StartTime) * 1f / this.needTime;
-                unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
+                Position = Vector3.Lerp(this.StartPos, this.Target, amount);
             }
         }
         
@@ -77,7 +79,7 @@ namespace ETModel
             }
 
             // 距离当前位置太近
-            if ((this.GetParent<Unit>().Position - target).sqrMagnitude < 0.01f)
+            if ((Position - target).sqrMagnitude < 0.01f)
             {
                 return;
             }

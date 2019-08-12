@@ -9,8 +9,7 @@ namespace ETModel
     {
         public override void Awake(SessionHeartbeatComponent self)
         {
-            HeartbeatMgrComponent.Ins.AddSessionHeartbeat(self);
-
+            self.Awake();
         }
     }
 
@@ -23,6 +22,8 @@ namespace ETModel
         public int SecondTotalMessageNum = 0;//一秒内 累计收到的消息条数
         public int UpReceiveMessageDistance = 0;//距离上次收到消息 有多长时间
 
+
+        private HeartbeatMgrComponent heartbeatMgrCom;
         //销毁Session
         public void DisposeSession()
         {
@@ -30,10 +31,16 @@ namespace ETModel
         }
         public override void Dispose()
         {
-            HeartbeatMgrComponent.Ins.RemoveSessionHeartbeat(InstanceId);//必须在 base.Dispose(); 前面调 因为 Dispose会吧id置为0
+            heartbeatMgrCom.RemoveSessionHeartbeat(InstanceId);//必须在 base.Dispose(); 前面调 因为 Dispose会吧id置为0
             base.Dispose();
-             SecondTotalMessageNum = 0;//一秒内 累计收到的消息条数
+            SecondTotalMessageNum = 0;//一秒内 累计收到的消息条数
             UpReceiveMessageDistance = 0;//距离上次收到消息 有多长时间
-    }
+        }
+
+        internal void Awake()
+        {
+            heartbeatMgrCom = Game.Scene.GetComponent<HeartbeatMgrComponent>();
+            heartbeatMgrCom.AddSessionHeartbeat(this);
+        }
     }
 }

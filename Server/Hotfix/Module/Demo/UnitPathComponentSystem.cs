@@ -26,7 +26,7 @@ namespace ETHotfix
                 await self.Entity.GetComponent<MoveComponent>().MoveToAsync(v3, self.CancellationTokenSource.Token);
             }
         }
-        
+
         public static async ETVoid MoveTo(this UnitPathComponent self, Vector3 target)
         {
             if ((self.Target - target).magnitude < 0.1f)
@@ -37,13 +37,13 @@ namespace ETHotfix
             self.Target = target;
 
             Unit unit = self.GetParent<Unit>();
-            
-            
+
+
             PathfindingComponent pathfindingComponent = Game.Scene.GetComponent<PathfindingComponent>();
-            self.ABPath = ComponentFactory.Create<ABPathWrap, Vector3, Vector3>(unit.Position, new Vector3(target.x, target.y, target.z));
+            self.ABPath = ComponentFactory.Create<ABPathWrap, Vector3, Vector3>(unit.GetComponent<MoveComponent>().Position,target);// new Vector3(target.x, target.y, target.z));
             pathfindingComponent.Search(self.ABPath);
             Log.Debug($"find result: {self.ABPath.Result.ListToString()}");
-            
+
             self.CancellationTokenSource?.Cancel();
             self.CancellationTokenSource = new CancellationTokenSource();
             await self.MoveAsync(self.ABPath.Result);
@@ -55,13 +55,16 @@ namespace ETHotfix
         public static void BroadcastPath(this UnitPathComponent self, List<Vector3> path, int index, int offset)
         {
             Unit unit = self.GetParent<Unit>();
-            Vector3 unitPos = unit.Position;
+            var moveCom = unit.GetComponent<MoveComponent>();
+
+
+            Vector3 unitPos = moveCom.Position;
             M2C_PathfindingResult m2CPathfindingResult = new M2C_PathfindingResult();
             m2CPathfindingResult.X = unitPos.x;
             m2CPathfindingResult.Y = unitPos.y;
             m2CPathfindingResult.Z = unitPos.z;
             m2CPathfindingResult.Id = unit.Id;
-                
+
             for (int i = 0; i < offset; ++i)
             {
                 if (index + i >= self.ABPath.Result.Count)

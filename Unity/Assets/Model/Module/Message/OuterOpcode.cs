@@ -52,6 +52,21 @@ namespace ETModel
 	[Message(OuterOpcode.C2G_Heartbeat)]
 	public partial class C2G_Heartbeat : IMessage {}
 
+	[Message(OuterOpcode.Frame_Pos)]
+	public partial class Frame_Pos : IActorLocationMessage {}
+
+	[Message(OuterOpcode.BallInfo)]
+	public partial class BallInfo {}
+
+	[Message(OuterOpcode.M2C_CreateBalls)]
+	public partial class M2C_CreateBalls : IActorMessage {}
+
+	[Message(OuterOpcode.M2C_BallPath)]
+	public partial class M2C_BallPath : IActorMessage {}
+
+	[Message(OuterOpcode.C2M_BallSkill)]
+	public partial class C2M_BallSkill : IActorLocationMessage {}
+
 }
 namespace ETModel
 {
@@ -73,5 +88,10 @@ namespace ETModel
 		 public const ushort C2M_Reload = 114;
 		 public const ushort M2C_Reload = 115;
 		 public const ushort C2G_Heartbeat = 116;
+		 public const ushort Frame_Pos = 117;
+		 public const ushort BallInfo = 118;
+		 public const ushort M2C_CreateBalls = 119;
+		 public const ushort M2C_BallPath = 120;
+		 public const ushort C2M_BallSkill = 121;
 	}
 }

@@ -348,6 +348,8 @@ namespace ETModel
 
 		public long GateSessionId { get; set; }
 
+		public int GameType { get; set; }
+
 	}
 
 	[Message(InnerOpcode.M2G_CreateUnit)]

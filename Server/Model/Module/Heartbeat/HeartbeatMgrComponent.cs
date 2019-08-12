@@ -11,7 +11,6 @@ namespace ETModel
         public static List<SessionHeartbeatComponent> _DestroyHeartbeatComponents=new List<SessionHeartbeatComponent>();
         public override async void Awake(HeartbeatMgrComponent self)
         {
-            HeartbeatMgrComponent.Ins = self;
             while (true)
             {
                 await Game.Scene.GetComponent<TimerComponent>().WaitAsync(1000);
@@ -34,7 +33,6 @@ namespace ETModel
     {
         public List<long> SessionHeartbeatIds=new List<long>();
         public Dictionary<long, SessionHeartbeatComponent> SessionHeartbeatDic=new Dictionary<long, SessionHeartbeatComponent>();
-        public static HeartbeatMgrComponent Ins { get; set; }
 
         /// <summary>
         /// 添加SessionHeartbeat 组件

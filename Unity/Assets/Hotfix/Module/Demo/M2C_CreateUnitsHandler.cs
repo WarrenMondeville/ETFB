@@ -17,7 +17,7 @@ namespace ETHotfix
 					continue;
 				}
 				Unit unit = UnitFactory.Create(unitInfo.UnitId);
-				unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
+				unit.Position = new Vector3(unitInfo.X, unitInfo.Y,unitInfo.Z);
 			}
 
 			await ETTask.CompletedTask;

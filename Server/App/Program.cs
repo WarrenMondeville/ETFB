@@ -89,6 +89,7 @@ namespace App
 						Game.Scene.AddComponent<PathfindingComponent>();
 						Game.Scene.AddComponent<CoroutineLockComponent>();
                         Game.Scene.AddComponent<HeartbeatMgrComponent>();
+                        Game.Scene.AddComponent<GameRoomComponent>();
                         break;
 					case AppType.AllServer:
 						// 发送普通actor消息
@@ -135,6 +136,7 @@ namespace App
 						Game.Scene.AddComponent<CoroutineLockComponent>();
                         // Game.Scene.AddComponent<HttpComponent>();
                         Game.Scene.AddComponent<HeartbeatMgrComponent>();
+                        Game.Scene.AddComponent<GameRoomComponent>();
                         break;
 					case AppType.Benchmark:
 						Game.Scene.AddComponent<NetOuterComponent>();
